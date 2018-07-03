@@ -7,5 +7,6 @@ RUN mv pdb-redo.tar.bz2 /usr/local/pdb-redo.tar.bz2
 RUN bunzip2 /usr/local/pdb-redo.tar.bz2
 RUN mkdir /usr/local/pdb-redo && cd /usr/local/pdb-redo && mv ../pdb-redo.tar .
 RUN cd /usr/local/pdb-redo && tar -xvf  pdb-redo.tar
+ADD pdb_redo.setup /usr/local/pdb-redo/tools/pdb_redo.setup
 ADD ccp4.setup-csh /usr/local/pdb-redo/ccp4.setup-csh
 ADD pdb_redo.csh /usr/local/pdb-redo/pdb_redo.csh

@@ -1,0 +1,44 @@
+#Setup file for PDB_REDO 
+
+#set environment parameters (define directories and files). EDIT THESE when needed.
+#Input, output and temporary directories:
+setenv BASE     /pdb-redo
+setenv LOG      /tmp/$USER/$PDBID.log          #Location of the temporary log file
+setenv WORKDIR  $BASE/tempdir/$PDBID           #Refinement workdir
+setenv OUTPUT   $BASE/pdb_redo/$D2/$PDBID      #Directory with the final results
+
+#Required software:
+source /usr/local/pdb-redo/ccp4.setup-csh       #CCP4 setup file. This should be the CSH/TCSH version!
+setenv WC       $BASE/whatcheck15                #WHAT_CHECK dir
+
+#Highly recommended optional software:
+setenv PDBCARE  $BASE/pdb-care                 #Directory with pdb-care's umfconverter; comment this line out if needed
+setenv UMF_HOME $PDBCARE/lib                   #Directory with xml files for pdb-care
+setenv RSTAT    /usr/bin/R                     #R executable; comment this line out if you don't have it
+setenv BLASTP   /usr/bin/blastp                #blastP executable; comment this line out if you don't have it
+
+#Optional software (free for academic users):
+setenv FOLDX    $BASE/foldx/foldx              #FoldX executable; comment this line out if you don't have it
+setenv ROTABASE $BASE/foldx/rotabase.txt       #FoldX rotamer file; comment this line out if you don't have it
+
+#Optional software (not free):
+setenv YASARA   $BASE/yasara/yasara            #YASARA executable; comment this line out if you don't have it
+
+#Book keeping files (put them in a directory with write permissions)
+setenv WHYNOT   $BASE/whynot.txt               #WhyNot file(s); you can set this to '/dev/null' if you want
+setenv DEBUG    $BASE/debug.txt                #Debug information; you can set this to '/dev/null' if you want
+setenv DEBUGB   $BASE/build_debug.txt          #Debug information for building tools; you can set this to '/dev/null' 
+setenv CHIRALS  $BASE/chirals.txt              #File with unknown chiral centers; you can set this to '/dev/null'
+
+#Local input files for homology restraints. These are automatically downloaded if not available.
+setenv REDODIR  /DATA/pdb_redo                 #Directory with the PDB_REDO structure models
+setenv EDSDIR   /DATA/pdb_redo                 #Directory with the corresponding EDstats data
+
+#Local input files for databank mode. 
+setenv SF       /DATA/structure_factors        #Directory with structure factor files from the PDB
+setenv PDB      /DATA/pdb                      #Directory with decompressed pdb files
+#This assumes typical pdb filenames!
+#E.g. for PDB entry "1abc" this would be r1abcsf.ent and pdb1abc.ent
+
+#Local output files for databank mode
+setenv RESTOUT  $BASE/pdb_redo/restraints      #Directory where output restraints are stored
